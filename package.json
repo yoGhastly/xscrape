@@ -29,6 +29,9 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@types/cheerio": "^0.22.35",
+    "axios": "^1.7.2",
+    "cheerio": "^1.0.0-rc.12",
     "express": "^4.18.2"
   }
 }

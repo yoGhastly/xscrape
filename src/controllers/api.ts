@@ -1,9 +1,14 @@
 import { Application, Request, Response } from "express";
-
-import CoursesData from "../../data/courses.json";
+import { scrapeData } from "../scraper";
 
 export const loadApiEndpoints = (app: Application): void => {
-	app.get("/api", (req: Request, res: Response) => {
-		return res.status(200).send(CoursesData);
-	});
+  app.get("/api", async (req: Request, res: Response) => {
+    try {
+      const url = "https://www.balenciaga.com/es-mx/hombre/accesorios/joyas";
+      const data = await scrapeData(url);
+      res.status(200).send(data);
+    } catch (error) {
+      res.status(500).send("Error occurred while scraping data");
+    }
+  });
 };
